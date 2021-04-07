@@ -29,50 +29,38 @@ Web Scraping App | Sociality.io
 
 
     <h2 class="font-weight-bold mb-2">All Products</h2>
+
+    {%if products %}
     <p class="font-italic text-muted mb-4">You can see product details by clicking on the product image or the product
         title.</p>
+    {%else%}
     <p class="font-italic text-muted mb-4">It seems that you have no product. Add products using the form field above.
     </p>
+    {%endif%}
 
     <div class="row pb-5 mb-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+
+        {%if products %}
+        {% for product in products %}
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0" style="margin-bottom: 30px !important;">
             <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><a href="#"><img
-                            src="https://i.etsystatic.com/12149676/r/il/b96248/2959017777/il_794xN.2959017777_t44r.jpg"
-                            alt="" class="img-fluid d-block mx-auto mb-3"></a>
-                    <h5> <a href="#" class="text-dark">Brass or Silver Leaf Bookmark Set</a></h5>
-                    <p class="small text-muted font-italic">A beautiful set of etched leaf bookmarks.
+                <div class="card-body p-4"><a href="/product/{{product.id}}"><img src="{{product.image}}" alt=""
+                            class="img-fluid d-block mx-auto mb-3"></a>
+                    <h5> <a href="/product/{{product.id}}" class="text-dark">{{product.name[0:40]}}</a></h5>
+                    <p class="small text-muted font-italic">
+                        {{product.description[0:60]}}...
                     </p>
+                    <h5>{{product.price}} {{product.price_symbol}}</h5>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><a href="#"><img
-                            src="https://i.etsystatic.com/21798907/r/il/29f118/2928452438/il_794xN.2928452438_jfmj.jpg"
-                            alt="" class="img-fluid d-block mx-auto mb-3"></a>
-                    <h5> <a href="#" class="text-dark">Brass or Silver Leaf Bookmark Set</a></h5>
-                    <p class="small text-muted font-italic">A beautiful set of etched leaf bookmarks.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="card rounded shadow-sm border-0">
-                <div class="card-body p-4"><a href="#"><img
-                            src="https://i.etsystatic.com/12149676/r/il/ee3ddc/2911324984/il_794xN.2911324984_8o47.jpg"
-                            alt="" class="img-fluid d-block mx-auto mb-3"></a>
-                    <h5> <a href="#" class="text-dark">Brass or Silver Leaf Bookmark Set</a></h5>
-                    <p class="small text-muted font-italic">A beautiful set of etched leaf bookmarks.
-                    </p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
+        {% endif %}
+
 
 
 
     </div>
-
 </div>
 </div>
 </div>
