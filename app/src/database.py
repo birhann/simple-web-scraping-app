@@ -11,7 +11,8 @@ class MySqlDb():
         self.dbName = dbName
         self.secretKey = dbName
 
-        self.createDatabase(self.dbName)  # create db if doesnt exist
+        # create db if doesnt exist - for local env
+        self.createDatabase(self.dbName)
 
         self.db = self.makeConnection()
 

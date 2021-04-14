@@ -11,8 +11,8 @@ from src import scraping
 
 
 scraperApp = Flask(__name__)
-db = MySqlDb(scraperApp, "localhost", "root",
-             "775477birhan", "coolscraperapp",)
+db = MySqlDb(scraperApp, "db", "root",
+             "root", "coolscraperapp",)
 
 
 @scraperApp.route('/', methods=["GET", "POST"])
@@ -54,4 +54,4 @@ class producInputForm(Form):
 
 
 if __name__ == "__main__":
-    scraperApp.run(debug=True)
+    scraperApp.run(host='0.0.0.0')
